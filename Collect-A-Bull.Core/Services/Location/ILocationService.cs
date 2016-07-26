@@ -2,6 +2,6 @@
 {
 	public interface ILocationService
 	{
-		 
+		bool TryGetlatestLocation(out double lat, out double lon);
 	}
 }

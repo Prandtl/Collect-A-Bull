@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Windows.Input;
 using Collect_A_Bull.Core.Services.Collections;
 using Collect_A_Bull.Core.Services.DataStore;
 using Collect_A_Bull.Core.Services.Location;
@@ -16,13 +16,7 @@ namespace Collect_A_Bull.Core.ViewModels
 			_locationService = locationService;
 			_messenger = messenger;
 			_token = _messenger.SubscribeOnMainThread<LocationMessage>(OnLocation);
-		}
-
-		private void OnLocation(LocationMessage location)
-		{
-			LocationKnown = true;
-			Latitude = location.Lat;
-			Longitude = location.Lon;
+			GetInitialLocation();
 		}
 
 		public string Caption
@@ -67,13 +61,29 @@ namespace Collect_A_Bull.Core.ViewModels
 			set { SetProperty(ref _imagePath, value); }
 		}
 
-		public System.Windows.Input.ICommand SaveCommand
+		public ICommand SaveCommand
 		{
 			get
 			{
 				_saveCommand = _saveCommand ?? new MvxCommand(SaveCollectable);
 				return _saveCommand;
 			}
+		}
+
+		private void GetInitialLocation()
+		{
+			double lat, lon;
+			if (!_locationService.TryGetlatestLocation(out lat, out lon)) return;
+			_locationKnown = true;
+			Latitude = lat;
+			Longitude = lon;
+		}
+
+		private void OnLocation(LocationMessage location)
+		{
+			LocationKnown = true;
+			Latitude = location.Lat;
+			Longitude = location.Lon;
 		}
 
 		private void SaveCollectable()
