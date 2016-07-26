@@ -1,3 +1,4 @@
+using Collect_A_Bull.Core.Services.Collections;
 using Collect_A_Bull.Core.Services.DataStore;
 using MvvmCross.Core.ViewModels;
 
@@ -6,6 +7,12 @@ namespace Collect_A_Bull.Core.ViewModels
 	public class HomeViewModel
 		: MvxViewModel
 	{
+		public HomeViewModel(ICollectionService collectionService)
+		{
+			_collectionService = collectionService;
+			Latest = _collectionService.Latest;
+		}
+
 		public Collectable Latest
 		{
 			get { return _latest; }
@@ -42,5 +49,7 @@ namespace Collect_A_Bull.Core.ViewModels
 		private Collectable _latest;
 		private MvxCommand _addNewCommand;
 		private MvxCommand _showListCommand;
+
+		private ICollectionService _collectionService;
 	}
 }
