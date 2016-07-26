@@ -2,7 +2,7 @@
 
 namespace Collect_A_Bull.Core.Services.DataStore
 {
-	interface IRepository
+	public interface IRepository
 	{
 		List<Collectable> AllCollectables();
 		void Add(Collectable item);

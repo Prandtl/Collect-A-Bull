@@ -3,7 +3,7 @@ using SQLite.Net.Attributes;
 
 namespace Collect_A_Bull.Core.Services.DataStore
 {
-	class Collectable
+	public class Collectable
 	{
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }

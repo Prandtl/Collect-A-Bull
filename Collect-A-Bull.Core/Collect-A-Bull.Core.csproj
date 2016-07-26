@@ -36,10 +36,12 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Collections\CollectionService.cs" />
+    <Compile Include="Services\Collections\ICollectionService.cs" />
     <Compile Include="Services\DataStore\Collectable.cs" />
     <Compile Include="Services\DataStore\IRepository.cs" />
     <Compile Include="Services\DataStore\Repository.cs" />
-    <Compile Include="ViewModels\FirstViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">

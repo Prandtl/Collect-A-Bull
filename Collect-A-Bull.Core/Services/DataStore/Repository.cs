@@ -2,11 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using MvvmCross.Plugins.Sqlite;
 using SQLite.Net;
-using SQLite.Net.Interop;
 
 namespace Collect_A_Bull.Core.Services.DataStore
 {
-	class Repository : IRepository
+	public class Repository : IRepository
 	{
 		public Repository(IMvxSqliteConnectionFactory factory)
 		{
