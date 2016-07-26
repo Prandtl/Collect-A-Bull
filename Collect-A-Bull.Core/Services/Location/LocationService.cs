@@ -4,7 +4,7 @@ using MvvmCross.Plugins.Messenger;
 
 namespace Collect_A_Bull.Core.Services.Location
 {
-	class LocationService : ILocationService
+	public class LocationService : ILocationService
 	{
 		public LocationService(IMvxLocationWatcher watcher, IMvxMessenger messenger)
 		{

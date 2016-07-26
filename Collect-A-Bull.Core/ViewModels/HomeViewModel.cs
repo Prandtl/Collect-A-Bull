@@ -10,7 +10,7 @@ namespace Collect_A_Bull.Core.ViewModels
 		public HomeViewModel(ICollectionService collectionService)
 		{
 			_collectionService = collectionService;
-			Latest = _collectionService.Latest;
+			RefreshLatest();
 		}
 
 		public Collectable Latest
@@ -39,12 +39,19 @@ namespace Collect_A_Bull.Core.ViewModels
 		private void AddNewCollectable()
 		{
 			ShowViewModel<AddViewModel>();
+			RefreshLatest();
 		}
 
 		private void ShowCollectedList()
 		{
 			ShowViewModel<ListViewModel>();
 		}
+
+		private void RefreshLatest()
+		{
+			Latest = _collectionService.Latest;
+		}
+
 
 		private Collectable _latest;
 		private MvxCommand _addNewCommand;
