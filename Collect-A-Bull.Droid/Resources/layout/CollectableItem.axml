@@ -63,14 +63,6 @@
                 local:MvxBind="Text Lon" />
         </LinearLayout>
     </LinearLayout>
-    <TextView
-        android:text="Note"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView7"
-        local:MvxBind="Text Note"
-        android:layout_marginLeft="10dp" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -90,4 +82,12 @@
             android:id="@+id/textView9"
             local:MvxBind="Text CapturedAtUtc" />
     </LinearLayout>
+    <TextView
+        android:text="Note"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        local:MvxBind="Text Note"
+        android:layout_marginLeft="10dp" />
 </LinearLayout>

@@ -16,14 +16,7 @@ namespace Collect_A_Bull.Core.Services.Collections
 			return _repository.AllCollectables();
 		}
 
-		public Collectable Latest
-		{
-			get
-			{
-				return _repository.AllCollectables()
-					.FirstOrDefault();
-			}
-		}
+		public Collectable Latest => _repository.AllCollectables().FirstOrDefault();
 
 		public void Add(Collectable newCollectable)
 		{

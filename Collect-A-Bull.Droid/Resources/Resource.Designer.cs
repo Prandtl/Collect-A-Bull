@@ -151,14 +151,14 @@ namespace Collect_A_Bull.Droid
 			// aapt resource value: 0x7f05000a
 			public const int textView6 = 2131034122;
 			
+			// aapt resource value: 0x7f05000d
+			public const int textView7 = 2131034125;
+			
 			// aapt resource value: 0x7f05000b
-			public const int textView7 = 2131034123;
+			public const int textView8 = 2131034123;
 			
 			// aapt resource value: 0x7f05000c
-			public const int textView8 = 2131034124;
-			
-			// aapt resource value: 0x7f05000d
-			public const int textView9 = 2131034125;
+			public const int textView9 = 2131034124;
 			
 			static Id()
 			{

@@ -1,15 +1,21 @@
 using Collect_A_Bull.Core.Services.Collections;
 using Collect_A_Bull.Core.Services.DataStore;
+using Collect_A_Bull.Core.Services.Location;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.Messenger;
 
 namespace Collect_A_Bull.Core.ViewModels
 {
 	public class HomeViewModel
 		: MvxViewModel
 	{
-		public HomeViewModel(ICollectionService collectionService)
+		public HomeViewModel(ICollectionService collectionService, IMvxMessenger messenger)
 		{
 			_collectionService = collectionService;
+			_messenger = messenger;
+
+			_token = _messenger.SubscribeOnMainThread<RepositoryChangedMessage>(OnRepoChanged);
+
 			RefreshLatest();
 		}
 
@@ -52,11 +58,17 @@ namespace Collect_A_Bull.Core.ViewModels
 			Latest = _collectionService.Latest;
 		}
 
+		private void OnRepoChanged(RepositoryChangedMessage msg)
+		{
+			RefreshLatest();
+		}
 
 		private Collectable _latest;
 		private MvxCommand _addNewCommand;
 		private MvxCommand _showListCommand;
 
 		private ICollectionService _collectionService;
+		private IMvxMessenger _messenger;
+		private MvxSubscriptionToken _token;
 	}
 }
