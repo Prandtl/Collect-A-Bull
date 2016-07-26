@@ -2,35 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <TextView
-        android:text="Last Collected:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:id="@+id/linearLayout1">
+    <Mvx.MvxListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:textSize="30dp"
-        android:layout_marginLeft="10dp"/>
-    <TextView
-        android:text="Last collected caption"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:textSize="25dp"
-        android:layout_marginLeft="12dp"
-        local:MvxBind ="Text Latest"/>
+        android:layout_height="match_parent"
+        android:id="@+id/listView1"
+        local:MvxBind="ItemsSource Collectables"
+        local:MvxItemTemplate="@layout/collectableitem" />
     <Button
-        android:text="Add"
+        android:text="Go back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button1"
-        local:MvxBind ="Click AddNewCommand"/>
-    <Button
-        android:text="Show collected"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        local:MvxBind ="Click ShowListCommand"/>
+        local:MvxBind="Click GoBackCommand"/>
 </LinearLayout>

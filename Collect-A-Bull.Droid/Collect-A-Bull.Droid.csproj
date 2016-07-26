@@ -143,8 +143,9 @@
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
     <AndroidResource Include="Resources\layout\HomeView.axml" />
-    <AndroidResource Include="Resources\layout\ListView.axml" />
+    <AndroidResource Include="Resources\layout\CollectableItem.axml" />
     <AndroidResource Include="Resources\layout\AddView.axml" />
+    <AndroidResource Include="Resources\layout\ListView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
