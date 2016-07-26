@@ -25,6 +25,11 @@ namespace Collect_A_Bull.Core.Services.Collections
 			}
 		}
 
+		public void Add(Collectable newCollectable)
+		{
+			_repository.Add(newCollectable);
+		}
+
 		private readonly IRepository _repository;
 
 	}

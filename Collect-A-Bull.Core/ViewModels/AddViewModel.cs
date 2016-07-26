@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Collect_A_Bull.Core.Services.Collections;
+using Collect_A_Bull.Core.Services.DataStore;
 using Collect_A_Bull.Core.Services.Location;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
@@ -13,15 +15,15 @@ namespace Collect_A_Bull.Core.ViewModels
 			_collectionService = collectionService;
 			_locationService = locationService;
 			_messenger = messenger;
-			_messenger.SubscribeOnMainThread<LocationMessage>(OnLocation);
+			_token = _messenger.SubscribeOnMainThread<LocationMessage>(OnLocation);
 		}
 
 		private void OnLocation(LocationMessage location)
 		{
-			throw new System.NotImplementedException();
+			LocationKnown = true;
+			Latitude = location.Lat;
+			Longitude = location.Lon;
 		}
-		
-
 
 		public string Caption
 		{
@@ -65,6 +67,38 @@ namespace Collect_A_Bull.Core.ViewModels
 			set { SetProperty(ref _imagePath, value); }
 		}
 
+		public System.Windows.Input.ICommand SaveCommand
+		{
+			get
+			{
+				_saveCommand = _saveCommand ?? new MvxCommand(SaveCollectable);
+				return _saveCommand;
+			}
+		}
+
+		private void SaveCollectable()
+		{
+			if (!Validate())
+				return;
+			var newCollectable = new Collectable()
+			{
+				Caption = Caption,
+				Note = Note,
+				CapturedAtUtc = DateTime.UtcNow,
+				LocationKnown = LocationKnown,
+				Lat = Latitude,
+				Lon = Longitude,
+				ImagePath = ImagePath
+			};
+			_collectionService.Add(newCollectable);
+			Close(this);
+		}
+
+		private bool Validate()
+		{
+			return !string.IsNullOrWhiteSpace(Caption);
+		}
+
 		private string _caption;
 		private string _note;
 		private bool _locationKnown;
@@ -72,10 +106,11 @@ namespace Collect_A_Bull.Core.ViewModels
 		private double _longitude;
 		private DateTime _capturedAtUtc;
 		private string _imagePath;
+		private MvxCommand _saveCommand;
 
 		private readonly ICollectionService _collectionService;
 		private readonly ILocationService _locationService;
 		private readonly IMvxMessenger _messenger;
-		
+		private MvxSubscriptionToken _token;
 	}
 }

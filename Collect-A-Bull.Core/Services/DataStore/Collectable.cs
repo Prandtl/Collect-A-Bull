@@ -17,5 +17,10 @@ namespace Collect_A_Bull.Core.Services.DataStore
 
 		public DateTime CapturedAtUtc { get; set; }
 		public string ImagePath { get; set; }
+
+		public override string ToString()
+		{
+			return Caption;
+		}
 	}
 }

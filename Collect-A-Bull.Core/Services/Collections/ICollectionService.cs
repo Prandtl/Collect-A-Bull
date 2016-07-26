@@ -7,5 +7,6 @@ namespace Collect_A_Bull.Core.Services.Collections
 	{
 		List<Collectable> GetAll();
 		Collectable Latest { get; }
+		void Add(Collectable newCollectable);
 	}
 }

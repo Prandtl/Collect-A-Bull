@@ -38,12 +38,12 @@ namespace Collect_A_Bull.Core.ViewModels
 
 		private void AddNewCollectable()
 		{
-			throw new System.NotImplementedException();
+			ShowViewModel<AddViewModel>();
 		}
 
 		private void ShowCollectedList()
 		{
-			throw new System.NotImplementedException();
+			ShowViewModel<ListViewModel>();
 		}
 
 		private Collectable _latest;
