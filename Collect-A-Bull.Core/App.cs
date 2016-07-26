@@ -1,10 +1,10 @@
-using Collect_A_Bull.Core.Services.DataStore;
-using MvvmCross.Platform;
+using Collect_A_Bull.Core.ViewModels;
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.IoC;
 
 namespace Collect_A_Bull.Core
 {
-	public class App : MvvmCross.Core.ViewModels.MvxApplication
+	public class App : MvxApplication
 	{
 		public override void Initialize()
 		{
@@ -18,7 +18,7 @@ namespace Collect_A_Bull.Core
 				.AsInterfaces()
 				.RegisterAsLazySingleton();
 
-			RegisterAppStart<ViewModels.HomeViewModel>();
+			RegisterAppStart<HomeViewModel>();
 		}
 	}
 }

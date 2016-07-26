@@ -41,6 +41,9 @@
     <Compile Include="Services\DataStore\Collectable.cs" />
     <Compile Include="Services\DataStore\IRepository.cs" />
     <Compile Include="Services\DataStore\Repository.cs" />
+    <Compile Include="Services\Location\ILocationService.cs" />
+    <Compile Include="Services\Location\LocationMessage.cs" />
+    <Compile Include="Services\Location\LocationService.cs" />
     <Compile Include="ViewModels\AddViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
   </ItemGroup>
