@@ -40,7 +40,7 @@ namespace Collect_A_Bull.Core.Services.Location
 			_messenger.Publish(message);
 		}
 
-		private void OnError(MvxLocationError error)
+		private static void OnError(MvxLocationError error)
 		{
 			Mvx.Warning("Error (code: {0}) in location service: {1}", error.Code, error.ToString());
 		}

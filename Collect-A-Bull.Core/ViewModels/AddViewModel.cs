@@ -1,20 +1,23 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Input;
 using Collect_A_Bull.Core.Services.Collections;
 using Collect_A_Bull.Core.Services.DataStore;
 using Collect_A_Bull.Core.Services.Location;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
+using MvvmCross.Plugins.PictureChooser;
 
 namespace Collect_A_Bull.Core.ViewModels
 {
-	class AddViewModel:MvxViewModel
+	class AddViewModel : MvxViewModel
 	{
-		public AddViewModel(ICollectionService collectionService, ILocationService locationService, IMvxMessenger messenger)
+		public AddViewModel(ICollectionService collectionService, ILocationService locationService, IMvxMessenger messenger, IMvxPictureChooserTask pictureChooserTask)
 		{
 			_collectionService = collectionService;
 			_locationService = locationService;
 			_messenger = messenger;
+			_pictureChooserTask = pictureChooserTask;
 			_token = _messenger.SubscribeOnMainThread<LocationMessage>(OnLocation);
 			GetInitialLocation();
 		}
@@ -57,8 +60,14 @@ namespace Collect_A_Bull.Core.ViewModels
 
 		public string ImagePath
 		{
-			get { return _imagePath;}
+			get { return _imagePath; }
 			set { SetProperty(ref _imagePath, value); }
+		}
+
+		public byte[] PictureBytes
+		{
+			get { return _pictureBytes; }
+			set { SetProperty(ref _pictureBytes, value); }
 		}
 
 		public ICommand SaveCommand
@@ -67,6 +76,15 @@ namespace Collect_A_Bull.Core.ViewModels
 			{
 				_saveCommand = _saveCommand ?? new MvxCommand(SaveCollectable);
 				return _saveCommand;
+			}
+		}
+
+		public ICommand AttachPictureCommand
+		{
+			get
+			{
+				_attachPictureCommand = _attachPictureCommand ?? new MvxCommand(AttachPicture);
+				return _attachPictureCommand;
 			}
 		}
 
@@ -104,6 +122,20 @@ namespace Collect_A_Bull.Core.ViewModels
 			Close(this);
 		}
 
+		private void AttachPicture()
+		{
+			_pictureChooserTask.ChoosePictureFromLibrary(400, 90, OnPicture, (() => { }));
+		}
+
+		private void OnPicture(Stream stream)
+		{
+			var ms = new MemoryStream();
+			stream.CopyTo(ms);
+			PictureBytes = ms.ToArray();
+		}
+
+
+
 		private bool Validate()
 		{
 			return !string.IsNullOrWhiteSpace(Caption);
@@ -117,10 +149,13 @@ namespace Collect_A_Bull.Core.ViewModels
 		private DateTime _capturedAtUtc;
 		private string _imagePath;
 		private MvxCommand _saveCommand;
+		private MvxCommand _attachPictureCommand;
+		private byte[] _pictureBytes;
 
 		private readonly ICollectionService _collectionService;
 		private readonly ILocationService _locationService;
 		private readonly IMvxMessenger _messenger;
 		private MvxSubscriptionToken _token;
+		private IMvxPictureChooserTask _pictureChooserTask;
 	}
 }
