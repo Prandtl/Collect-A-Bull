@@ -76,6 +76,22 @@
       <HintPath>..\packages\MvvmCross.Platform.4.2.2\lib\MonoAndroid\MvvmCross.Platform.Droid.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MvvmCross.Plugins.DownloadCache, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Plugin.DownloadCache.4.2.2\lib\MonoAndroid\MvvmCross.Plugins.DownloadCache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.DownloadCache.Droid, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Plugin.DownloadCache.4.2.2\lib\MonoAndroid\MvvmCross.Plugins.DownloadCache.Droid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.File, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Plugin.File.4.2.2\lib\MonoAndroid\MvvmCross.Plugins.File.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.File.Droid, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Plugin.File.4.2.2\lib\MonoAndroid\MvvmCross.Plugins.File.Droid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MvvmCross.Plugins.Location, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.Plugin.Location.4.2.2\lib\MonoAndroid\MvvmCross.Plugins.Location.dll</HintPath>
       <Private>True</Private>
@@ -128,8 +144,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Android.Support.v4.23.4.0\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
+    <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
     <Compile Include="Bootstrap\LocationPluginBootstrap.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\PictureChooserPluginBootstrap.cs" />
@@ -176,6 +198,7 @@
       <Name>Collect-A-Bull.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

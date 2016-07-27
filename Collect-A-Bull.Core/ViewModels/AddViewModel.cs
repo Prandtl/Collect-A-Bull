@@ -5,6 +5,7 @@ using Collect_A_Bull.Core.Services.Collections;
 using Collect_A_Bull.Core.Services.DataStore;
 using Collect_A_Bull.Core.Services.Location;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.File;
 using MvvmCross.Plugins.Messenger;
 using MvvmCross.Plugins.PictureChooser;
 
@@ -12,13 +13,18 @@ namespace Collect_A_Bull.Core.ViewModels
 {
 	class AddViewModel : MvxViewModel
 	{
-		public AddViewModel(ICollectionService collectionService, ILocationService locationService, IMvxMessenger messenger, IMvxPictureChooserTask pictureChooserTask)
+		public AddViewModel(ICollectionService collectionService,
+							ILocationService locationService,
+							IMvxMessenger messenger,
+							IMvxPictureChooserTask pictureChooserTask,
+							IMvxFileStore fileStore)
 		{
 			_collectionService = collectionService;
 			_locationService = locationService;
 			_messenger = messenger;
 			_pictureChooserTask = pictureChooserTask;
 			_token = _messenger.SubscribeOnMainThread<LocationMessage>(OnLocation);
+			_fileStore = fileStore;
 			GetInitialLocation();
 		}
 
@@ -108,6 +114,11 @@ namespace Collect_A_Bull.Core.ViewModels
 		{
 			if (!Validate())
 				return;
+			if (PictureBytes != null)
+			{
+				ImagePath = GenerateImagePath();
+				_fileStore.WriteFile(ImagePath, PictureBytes);
+			}
 			var newCollectable = new Collectable()
 			{
 				Caption = Caption,
@@ -134,7 +145,15 @@ namespace Collect_A_Bull.Core.ViewModels
 			PictureBytes = ms.ToArray();
 		}
 
-
+		private string GenerateImagePath()
+		{
+			var id = Guid.NewGuid().ToString("N");
+			var name = $"img{id}.jpg";
+			_imageFolderPath = "images";
+			_fileStore.EnsureFolderExists(_imageFolderPath);
+			var path = _fileStore.PathCombine(_fileStore.NativePath(_imageFolderPath), name);
+			return path;
+		}
 
 		private bool Validate()
 		{
@@ -157,5 +176,7 @@ namespace Collect_A_Bull.Core.ViewModels
 		private readonly IMvxMessenger _messenger;
 		private MvxSubscriptionToken _token;
 		private IMvxPictureChooserTask _pictureChooserTask;
+		private IMvxFileStore _fileStore;
+		private string _imageFolderPath;
 	}
 }
