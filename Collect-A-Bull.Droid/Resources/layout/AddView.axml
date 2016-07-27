@@ -39,7 +39,19 @@
         android:id="@+id/textView2"
         android:layout_marginLeft="10dp"
         android:textSize="24dp"
-        local:MvxBind="Visibility LocationKnown, Converter=Visibility"/>
+        local:MvxBind="Visibility LocationKnown, Converter=Visibility" />
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView1" 
+        local:MvxBind="PictureBytes"/>
+    <Button
+        android:text="Attach picture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        local:MvxBind="Click AttachPictureCommand"/>
     <Button
         android:text="Add"
         android:layout_width="match_parent"
