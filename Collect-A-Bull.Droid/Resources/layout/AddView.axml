@@ -38,15 +38,29 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/editText2"
                 local:MvxBind="Text Note" />
-            <TextView
-                android:text="Location is known."
-                android:textAppearance="?android:attr/textAppearanceMedium"
+            <CheckBox
+                android:text="Use Location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView2"
+                android:id="@+id/checkBox1"
                 android:layout_marginLeft="10dp"
-                android:textSize="24dp"
-                local:MvxBind="Visibility LocationKnown, Converter=Visibility" />
+                local:MvxBind="Checked UseLocation"
+                android:checked="true" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                local:MvxBind="Visibility UseLocation, Converter=Visibility">
+                <TextView
+                    android:text="Location is known."
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="24dp"
+                    local:MvxBind="Visibility LocationKnown, Converter=Visibility" />
+            </LinearLayout>
             <Mvx.MvxImageView
                 android:src="@android:drawable/ic_menu_gallery"
                 android:layout_width="match_parent"

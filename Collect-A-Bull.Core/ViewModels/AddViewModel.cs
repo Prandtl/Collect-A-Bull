@@ -26,6 +26,7 @@ namespace Collect_A_Bull.Core.ViewModels
 			_token = _messenger.SubscribeOnMainThread<LocationMessage>(OnLocation);
 			_fileStore = fileStore;
 			GetInitialLocation();
+			UseLocation = true;
 		}
 
 		public string Caption
@@ -44,6 +45,12 @@ namespace Collect_A_Bull.Core.ViewModels
 		{
 			get { return _locationKnown; }
 			set { SetProperty(ref _locationKnown, value); }
+		}
+
+		public bool UseLocation
+		{
+			get { return _useLocation; }
+			set { SetProperty(ref _useLocation, value); }
 		}
 
 		public double Latitude
@@ -119,6 +126,12 @@ namespace Collect_A_Bull.Core.ViewModels
 				ImagePath = GenerateImagePath();
 				_fileStore.WriteFile(ImagePath, PictureBytes);
 			}
+			if (!UseLocation)
+			{
+				LocationKnown = false;
+				Latitude = 0;
+				Longitude = 0;
+			}
 			var newCollectable = new Collectable()
 			{
 				Caption = Caption,
@@ -163,6 +176,7 @@ namespace Collect_A_Bull.Core.ViewModels
 		private string _caption;
 		private string _note;
 		private bool _locationKnown;
+		private bool _useLocation;
 		private double _latitude;
 		private double _longitude;
 		private DateTime _capturedAtUtc;
