@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
         local:MvxBind="Text Caption"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp"
+        android:textSize="28dp" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
