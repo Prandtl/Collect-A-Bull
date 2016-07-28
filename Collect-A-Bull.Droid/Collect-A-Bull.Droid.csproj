@@ -164,6 +164,7 @@
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\AddView.cs" />
+    <Compile Include="Views\DetailsView.cs" />
     <Compile Include="Views\ListView.cs" />
     <Compile Include="Views\HomeView.cs" />
   </ItemGroup>
@@ -177,6 +178,7 @@
     <AndroidResource Include="Resources\layout\CollectableItem.axml" />
     <AndroidResource Include="Resources\layout\AddView.axml" />
     <AndroidResource Include="Resources\layout\ListView.axml" />
+    <AndroidResource Include="Resources\layout\DetailsView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

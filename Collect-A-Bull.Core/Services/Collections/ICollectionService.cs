@@ -7,6 +7,7 @@ namespace Collect_A_Bull.Core.Services.Collections
 	{
 		List<Collectable> GetAll();
 		Collectable GetLatest();
+		Collectable Get(int id);
 		void Add(Collectable newCollectable);
 		void Update(Collectable item);
 		void Delete(Collectable item);

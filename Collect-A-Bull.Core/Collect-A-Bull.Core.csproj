@@ -45,6 +45,7 @@
     <Compile Include="Services\Location\ILocationService.cs" />
     <Compile Include="Services\Location\LocationMessage.cs" />
     <Compile Include="Services\Location\LocationService.cs" />
+    <Compile Include="ViewModels\DetailsViewModel.cs" />
     <Compile Include="ViewModels\AddViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ListViewModel.cs" />

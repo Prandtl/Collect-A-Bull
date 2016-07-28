@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView1"
                     android:maxHeight="150dp"
-                    local:MvxBind="ImageUrl Latest.ImagePath;Visibility Latest, Converter=Visibility" />
+                    local:MvxBind="ImageUrl Latest.ImagePath;Visibility Latest.ImagePath, Converter=Visibility" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="0dp"

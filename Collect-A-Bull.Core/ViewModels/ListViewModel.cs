@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Input;
 using Collect_A_Bull.Core.Services.Collections;
 using Collect_A_Bull.Core.Services.DataStore;
 using MvvmCross.Core.ViewModels;
 
 namespace Collect_A_Bull.Core.ViewModels
 {
-	public class ListViewModel:MvxViewModel
+	public class ListViewModel : MvxViewModel
 	{
 		public ListViewModel(ICollectionService collectionService)
 		{
@@ -19,7 +20,15 @@ namespace Collect_A_Bull.Core.ViewModels
 			set { SetProperty(ref _collectables, value); }
 		}
 
-		public System.Windows.Input.ICommand GoBackCommand
+		public ICommand ShowDetailsCommand
+		{
+			get
+			{
+				return new MvxCommand<Collectable>(item => ShowViewModel<DetailsViewModel>(new DetailsViewModel.Nav() { Id = item.Id }));
+			}
+		}
+
+		public ICommand GoBackCommand
 		{
 			get
 			{

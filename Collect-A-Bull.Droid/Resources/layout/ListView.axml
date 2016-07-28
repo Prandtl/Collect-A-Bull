@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listView1"
-        local:MvxBind="ItemsSource Collectables"
+        local:MvxBind="ItemsSource Collectables;ItemClick ShowDetailsCommand"
         android:divider="#aaaaaa"
-        local:MvxItemTemplate="@layout/collectableitem" />
+        local:MvxItemTemplate="@layout/collectableitem"/>
     <Button
         android:text="Go back"
         android:layout_width="match_parent"

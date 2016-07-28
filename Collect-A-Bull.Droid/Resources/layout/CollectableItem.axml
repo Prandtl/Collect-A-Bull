@@ -22,7 +22,7 @@
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:id="@+id/imageView1"
-            local:MvxBind="ImageUrl ImagePath"/>
+            local:MvxBind="ImageUrl ImagePath" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"

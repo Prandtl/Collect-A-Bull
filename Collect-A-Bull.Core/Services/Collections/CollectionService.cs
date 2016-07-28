@@ -23,6 +23,11 @@ namespace Collect_A_Bull.Core.Services.Collections
 				.FirstOrDefault();
 		}
 
+		public Collectable Get(int id)
+		{
+			return GetAll().FirstOrDefault(c => c.Id == id);
+		}
+
 		public void Add(Collectable newCollectable)
 		{
 			_repository.Add(newCollectable);
