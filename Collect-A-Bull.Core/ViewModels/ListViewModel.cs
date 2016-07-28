@@ -3,15 +3,18 @@ using System.Windows.Input;
 using Collect_A_Bull.Core.Services.Collections;
 using Collect_A_Bull.Core.Services.DataStore;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.Messenger;
 
 namespace Collect_A_Bull.Core.ViewModels
 {
 	public class ListViewModel : MvxViewModel
 	{
-		public ListViewModel(ICollectionService collectionService)
+		public ListViewModel(ICollectionService collectionService, IMvxMessenger messenger)
 		{
 			_collectionService = collectionService;
 			Collectables = _collectionService.GetAll();
+			_messenger = messenger;
+			_token = _messenger.SubscribeOnMainThread<RepositoryChangedMessage>(OnRepoChanged);
 		}
 
 		public List<Collectable> Collectables
@@ -42,9 +45,16 @@ namespace Collect_A_Bull.Core.ViewModels
 			Close(this);
 		}
 
+		private void OnRepoChanged(RepositoryChangedMessage obj)
+		{
+			Collectables = _collectionService.GetAll();
+		}
+		
 		private List<Collectable> _collectables;
 		private MvxCommand _goBackCommand;
 
 		private readonly ICollectionService _collectionService;
+		private IMvxMessenger _messenger;
+		private MvxSubscriptionToken _token;
 	}
 }

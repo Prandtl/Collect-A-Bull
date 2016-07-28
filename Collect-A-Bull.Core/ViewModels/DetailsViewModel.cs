@@ -2,6 +2,7 @@
 using Collect_A_Bull.Core.Services.Collections;
 using Collect_A_Bull.Core.Services.DataStore;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.Messenger;
 
 namespace Collect_A_Bull.Core.ViewModels
 {
@@ -11,7 +12,7 @@ namespace Collect_A_Bull.Core.ViewModels
 		{
 			_collectionService = collectionService;
 		}
-
+		
 		public class Nav
 		{
 			public int Id { get; set; }
