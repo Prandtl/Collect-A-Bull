@@ -133,11 +133,20 @@ namespace Collect_A_Bull.Droid
 			// aapt resource value: 0x7f050007
 			public const int imageView1 = 2131034119;
 			
+			// aapt resource value: 0x7f050014
+			public const int linearLayout1 = 2131034132;
+			
+			// aapt resource value: 0x7f050015
+			public const int listView1 = 2131034133;
+			
 			// aapt resource value: 0x7f050011
-			public const int linearLayout1 = 2131034129;
+			public const int relativeLayout1 = 2131034129;
 			
 			// aapt resource value: 0x7f050012
-			public const int listView1 = 2131034130;
+			public const int relativeLayout2 = 2131034130;
+			
+			// aapt resource value: 0x7f050013
+			public const int relativeLayout3 = 2131034131;
 			
 			// aapt resource value: 0x7f050002
 			public const int textView1 = 2131034114;

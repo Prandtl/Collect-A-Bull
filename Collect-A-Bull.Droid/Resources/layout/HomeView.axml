@@ -4,23 +4,57 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <TextView
-        android:text="Last Collected:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:textSize="30dp"
-        android:layout_marginLeft="10dp" />
-    <TextView
-        android:text="Last collected caption"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:textSize="25dp"
-        android:layout_marginLeft="12dp"
-        local:MvxBind="Text Latest" />
+        local:MvxBind="Visibility Latest, Converter=Visibility">
+        <TextView
+            android:text="Last Collected:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:textSize="30dp"
+            android:layout_marginLeft="10dp" />
+        <TextView
+            android:text="Last collected caption"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:textSize="25dp"
+            android:layout_marginLeft="12dp"
+            local:MvxBind="Text Latest.Caption" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/relativeLayout1"
+                android:layout_weight="0.1" />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/relativeLayout2"
+                android:layout_weight="0.8">
+                <Mvx.MvxImageView
+                    android:src="@android:drawable/ic_menu_gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView1"
+                    android:maxHeight="150dp"
+                    local:MvxBind="ImageUrl Latest.ImagePath;Visibility Latest, Converter=Visibility" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/relativeLayout3"
+                android:layout_weight="0.1" />
+        </LinearLayout>
+    </LinearLayout>
     <Button
         android:text="Add"
         android:layout_width="match_parent"
