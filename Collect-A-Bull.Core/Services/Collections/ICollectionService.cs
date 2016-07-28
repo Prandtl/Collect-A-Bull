@@ -6,7 +6,10 @@ namespace Collect_A_Bull.Core.Services.Collections
 	public interface ICollectionService
 	{
 		List<Collectable> GetAll();
-		Collectable Latest { get; }
+		Collectable GetLatest();
 		void Add(Collectable newCollectable);
+		void Update(Collectable item);
+		void Delete(Collectable item);
+
 	}
 }

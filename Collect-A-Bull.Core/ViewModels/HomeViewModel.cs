@@ -1,6 +1,6 @@
+using System.Windows.Input;
 using Collect_A_Bull.Core.Services.Collections;
 using Collect_A_Bull.Core.Services.DataStore;
-using Collect_A_Bull.Core.Services.Location;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 
@@ -24,7 +24,7 @@ namespace Collect_A_Bull.Core.ViewModels
 			get { return _latest; }
 			set { SetProperty(ref _latest, value); }
 		}
-		public System.Windows.Input.ICommand AddNewCommand
+		public ICommand AddNewCommand
 		{
 			get
 			{
@@ -33,7 +33,7 @@ namespace Collect_A_Bull.Core.ViewModels
 			}
 		}
 
-		public System.Windows.Input.ICommand ShowListCommand
+		public ICommand ShowListCommand
 		{
 			get
 			{
@@ -55,7 +55,7 @@ namespace Collect_A_Bull.Core.ViewModels
 
 		private void RefreshLatest()
 		{
-			Latest = _collectionService.Latest;
+			Latest = _collectionService.GetLatest();
 		}
 
 		private void OnRepoChanged(RepositoryChangedMessage msg)

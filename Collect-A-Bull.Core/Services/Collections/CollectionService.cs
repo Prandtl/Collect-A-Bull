@@ -16,11 +16,26 @@ namespace Collect_A_Bull.Core.Services.Collections
 			return _repository.AllCollectables();
 		}
 
-		public Collectable Latest => _repository.AllCollectables().FirstOrDefault();
+		public Collectable GetLatest()
+		{
+			return GetAll()
+				.OrderByDescending(x => x.CapturedAtUtc)
+				.FirstOrDefault();
+		}
 
 		public void Add(Collectable newCollectable)
 		{
 			_repository.Add(newCollectable);
+		}
+
+		public void Update(Collectable item)
+		{
+			_repository.Update(item);
+		}
+
+		public void Delete(Collectable item)
+		{
+			_repository.Delete(item);
 		}
 
 		private readonly IRepository _repository;
