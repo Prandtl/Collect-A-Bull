@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
         android:textSize="30dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp" />
     <TextView
         android:text="Last collected caption"
         android:textAppearance="?android:attr/textAppearanceSmall"
@@ -20,17 +20,17 @@
         android:id="@+id/textView2"
         android:textSize="25dp"
         android:layout_marginLeft="12dp"
-        local:MvxBind ="Text Latest"/>
+        local:MvxBind="Text Latest" />
     <Button
         android:text="Add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button1"
-        local:MvxBind ="Click AddNewCommand"/>
+        local:MvxBind="Click AddNewCommand" />
     <Button
         android:text="Show collected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
-        local:MvxBind ="Click ShowListCommand"/>
+        local:MvxBind="Click ShowListCommand" />
 </LinearLayout>

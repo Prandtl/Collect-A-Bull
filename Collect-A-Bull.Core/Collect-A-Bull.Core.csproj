@@ -35,6 +35,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Converters\CollectableHasAPictureValueConverter.cs" />
+    <Compile Include="Converters\IsCollectablePresentValueConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Collections\CollectionService.cs" />
     <Compile Include="Services\Collections\ICollectionService.cs" />
